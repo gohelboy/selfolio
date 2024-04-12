@@ -1,0 +1,72 @@
+{
+  "fullName": "John Doe",
+  "email": "johndoe@example.com",
+  "phoneNumber": "123-456-7890",
+  "address": "123 Main Street, Anytown, USA",
+  "tagline": "Full Stack Developer",
+  "summary": "Experienced software developer with expertise in JavaScript and React.js",
+  "education": [{
+    "degree": "Bachelor of Science in Computer Science",
+    "institution": "University of Example",
+    "graduationYear": 2015
+  }],
+  "workExperience": [{
+    "jobTitle": "Software Engineer",
+    "companyName": "Tech Company XYZ",
+    "employmentDates": "2015 - Present",
+    "responsibilities": "Developing and maintaining web applications using modern technologies"
+  }],
+  "skills": [{
+      "name": "JavaScript",
+      "category": "Programming Languages"
+    },
+    {
+      "name": "React.js",
+      "category": "Frameworks & Libraries"
+    }
+  ],
+  "projects": [{
+    "projectName": "E-commerce Website",
+    "description": "Built a fully functional e-commerce platform using React.js and Node.js",
+    "technologiesUsed": ["React.js", "Node.js", "MongoDB"],
+    "projectLink": "https://example.com",
+    "projectImage": "https://example.com/images/project1.png",
+    "comments": [{
+      "user": "userId123",
+      "commentText": "Impressive project! I love the design.",
+      "createdAt": "2023-01-15T00:00:00.000Z"
+    }]
+  }],
+  "certifications": [{
+    "certificationName": "React Developer Certification",
+    "issuingOrganization": "React Academy",
+    "certificationDate": "2022-05-20T00:00:00.000Z"
+  }],
+  "languages": [{
+      "language": "English",
+      "proficiency": "Fluent"
+    },
+    {
+      "language": "Spanish",
+      "proficiency": "Intermediate"
+    }
+  ],
+  "interestsHobbies": [{
+      "interestHobby": "Playing guitar"
+    },
+    {
+      "interestHobby": "Reading books"
+    }
+  ],
+  "references": [{
+    "name": "Jane Smith",
+    "email": "janesmith@example.com",
+    "phoneNumber": "987-654-3210"
+  }],
+  "socialMediaLinks": {
+    "linkedIn": "https://www.linkedin.com/in/johndoe",
+    "github": "https://github.com/johndoe",
+    "twitter": "https://twitter.com/johndoe",
+    "other": "https://example.com/johndoe"
+  }
+}
