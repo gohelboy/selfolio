@@ -3,7 +3,7 @@ import useGetLocalItem from '@/hooks/useGetLocalItem'
 import { routes } from '@/utils/routes'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { useGetPortfolioDetails, usePostMe } from '../portfolioQueries'
+import { useGetPortfolioDetails, usePostEducation, usePostMe } from '../portfolioQueries'
 
 const Page = ({ params: { id } }) => {
 
@@ -13,7 +13,7 @@ const Page = ({ params: { id } }) => {
 
     const tabs = [
         { name: 'Me', content: <MeContent portfolioId={id} data={data?.meData} /> },
-        { name: 'Education', content: 'Education tab content goes here' },
+        { name: 'Education', content: <EducationDetails portfolioId={id} data={data?.educationData?.education} /> },
         { name: 'Experience', content: 'Experience tab content goes here' },
         { name: 'Skills', content: 'Skills tab content goes here' },
         { name: 'Projects', content: 'Projects tab content goes here' },
@@ -60,6 +60,7 @@ export default Page
 
 
 export const MeContent = ({ portfolioId, data }) => {
+
     const localUser = useGetLocalItem('user');
     const { mutate } = usePostMe(portfolioId);
 
@@ -105,3 +106,54 @@ export const MeContent = ({ portfolioId, data }) => {
         </div>
     )
 }
+
+export const EducationDetails = ({ portfolioId, data }) => {
+    const localUser = useGetLocalItem('user');
+    const { mutate } = usePostEducation(portfolioId);
+
+    const [educationList, setEducationList] = useState(data || [{ degree: '', institution: '', graduationYear: '' }]);
+
+    useEffect(() => {
+        setEducationList(data || [{ degree: '', institution: '', graduationYear: '' }]);
+    }, [data]);
+
+    const handleChange = (index, field, value) => {
+        const updatedList = [...educationList];
+        updatedList[index][field] = value;
+        setEducationList(updatedList);
+    };
+
+    const addEducation = () => {
+        setEducationList([...educationList, { degree: '', institution: '', graduationYear: '' }]);
+    };
+
+    const save = () => {
+        const updatedData = {
+            userId: localUser?.id,
+            portfolioId,
+            payload: educationList,
+        };
+        mutate(updatedData);
+    };
+
+    console.log(educationList)
+
+    return (
+        <>
+            {educationList?.map((education, index) => (
+                <div key={index} className='flex flex-col gap-4'>
+                    <input type="text" placeholder="Degree" className='h-10 p-4 rounded-xl' value={education?.degree} onChange={(e) => handleChange(index, 'degree', e.target.value)} />
+                    <input type="text" placeholder="Institution" className='h-10 p-4 rounded-xl' value={education?.institution} onChange={(e) => handleChange(index, 'institution', e.target.value)} />
+                    <input type="number" placeholder="Year" className='h-10 p-4 rounded-xl' value={education?.graduationYear} onChange={(e) => handleChange(index, 'graduationYear', e.target.value)} />
+                </div>))}
+            <button className='bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded'
+                onClick={addEducation}>
+                Add More
+            </button>
+            <button className='bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded'
+                onClick={save}>
+                Save
+            </button>
+        </>
+    );
+};

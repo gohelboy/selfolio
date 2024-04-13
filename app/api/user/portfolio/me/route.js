@@ -22,7 +22,7 @@ export const POST = async (req) => {
             email,
             ...rest,
         }
-        await meModal.findByIdAndUpdate(portfolioId, newData, { new: true, upsert: true });
+        await meModal.findOneAndUpdate({ portfolio: portfolioId }, newData, { new: true, upsert: true });
         return successReponse('About me updated successfully');
     } catch (error) {
         return InternalServerError(error);

@@ -24,16 +24,16 @@ export const GET = async (req, { params }) => {
         if (!portfolio) return failedResponse("Portfolio not found");
 
         const [meData, educationData, experienceData, skillData, projectData, certificateData, languageData, hobbyData, refrenceData, socialData] = await Promise.all([
-            meModal.findById(portfolio?._id),
-            educationModal.findById(portfolio?._id),
-            experinceModal.findById(portfolio?._id),
-            skillModal.findById(portfolio?._id),
-            projectModal.findById(portfolio?._id),
-            certificateModal.findById(portfolio?._id),
-            languageModal.findById(portfolio?._id),
-            hobbyModal.findById(portfolio?._id),
-            refrenceModal.findById(portfolio?._id),
-            socialModal.findById(portfolio?._id),
+            meModal.findOne({ portfolio: portfolio?._id }),
+            educationModal.findOne({ portfolio: portfolio?._id }),
+            experinceModal.findOne({ portfolio: portfolio?._id }),
+            skillModal.findOne({ portfolio: portfolio?._id }),
+            projectModal.findOne({ portfolio: portfolio?._id }),
+            certificateModal.findOne({ portfolio: portfolio?._id }),
+            languageModal.findOne({ portfolio: portfolio?._id }),
+            hobbyModal.findOne({ portfolio: portfolio?._id }),
+            refrenceModal.findOne({ portfolio: portfolio?._id }),
+            socialModal.findOne({ portfolio: portfolio?._id }),
         ]);
 
         const portfolioData = {

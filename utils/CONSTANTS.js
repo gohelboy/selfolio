@@ -8,6 +8,8 @@ export const queryKey = {
     forgetPassword: "forgetPassword",
 
     postMe: "postMe",
+    postEducation: "postEducation",
+
     createPortfolio: "createPortfolio",
     getPortfolios: "getPortfolios",
     deletePortfolios: "deletePortfolios",
