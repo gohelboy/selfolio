@@ -6,6 +6,8 @@ import { useGetPortfolioDetails } from '../portfolioQueries'
 import Education from './education'
 import Me from './me'
 import Experience from './Experience'
+import Skills from './skills'
+import Project from './project'
 
 const Page = ({ params: { id } }) => {
 
@@ -17,8 +19,8 @@ const Page = ({ params: { id } }) => {
         { name: 'Me', content: <Me portfolioId={id} data={data?.meData} /> },
         { name: 'Education', content: <Education portfolioId={id} data={data?.educationData?.education} /> },
         { name: 'Experience', content: <Experience portfolioId={id} data={data?.experienceData?.workExperience} /> },
-        { name: 'Skills', content: 'Skills tab content goes here' },
-        { name: 'Projects', content: 'Projects tab content goes here' },
+        { name: 'Skills', content: <Skills portfolioId={id} data={data?.skillData?.skills} /> },
+        { name: 'Projects', content: <Project portfolioId={id} data={data?.projectData?.projects} /> },
         { name: 'Certifications', content: 'Certifications tab content goes here' },
         { name: 'VolunteerExperience', content: 'Volunteer Experience tab content goes here' },
         { name: 'Languages', content: 'Languages tab content goes here' },

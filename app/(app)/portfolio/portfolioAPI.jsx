@@ -26,3 +26,14 @@ export const postEducation = async (data) => {
 export const postExperience = async (data) => {
     return handelRequest(instance.post, `user/portfolio/experience?u=${data?.userId}&p=${data?.portfolioId}`, data?.payload);
 }
+
+export const postSkills = async (data) => {
+    return handelRequest(instance.post, `user/portfolio/skills?u=${data?.userId}&p=${data?.portfolioId}`, data?.payload);
+}
+
+export const postProjects = async (data) => {
+    return handelRequest(instance.post, `user/portfolio/projects?u=${data?.userId}&p=${data?.portfolioId}`, data?.payload);
+}
+export const postProjectImage = async (data) => {
+    return handelRequest(instance.post, `user/portfolio/projectsImage`, data);
+}
