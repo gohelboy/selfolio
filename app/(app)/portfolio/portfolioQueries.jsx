@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from "@tanstack/react-query"
-import { deletePortfolio, getPorfolios, getPostfolioDetails, postCreatePorfolio, postEducation, postMe } from "./portfolioAPI"
+import { deletePortfolio, getPorfolios, getPostfolioDetails, postCreatePorfolio, postEducation, postExperience, postMe } from "./portfolioAPI"
 import { queryKey } from "@/utils/CONSTANTS"
 import { queryClient } from "@/app/_components/QueryProviderWrapper"
 
@@ -50,6 +50,16 @@ export const usePostEducation = (portfolioId) => {
     return useMutation({
         mutationKey: [queryKey?.postEducation],
         mutationFn: (data) => postEducation(data),
+        onSuccess: () => {
+            queryClient.invalidateQueries([queryKey.getPortfolioDetails + portfolioId]);
+        }
+    })
+}
+
+export const usePostExpirence = (portfolioId) => {
+    return useMutation({
+        mutationKey: [queryKey?.postExperience],
+        mutationFn: (data) => postExperience(data),
         onSuccess: () => {
             queryClient.invalidateQueries([queryKey.getPortfolioDetails + portfolioId]);
         }

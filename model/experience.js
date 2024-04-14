@@ -20,10 +20,6 @@ const experienceSchema = new Schema({
                 type: String,
                 required: true
             },
-            responsibilities: {
-                type: String,
-                required: true
-            }
         }
     ],
 }, { timestamps: true })

@@ -1,9 +1,11 @@
 'use client'
-import useGetLocalItem from '@/hooks/useGetLocalItem'
 import { routes } from '@/utils/routes'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
-import { useGetPortfolioDetails, usePostEducation, usePostMe } from '../portfolioQueries'
+import { useState } from 'react'
+import { useGetPortfolioDetails } from '../portfolioQueries'
+import Education from './education'
+import Me from './me'
+import Experience from './Experience'
 
 const Page = ({ params: { id } }) => {
 
@@ -12,9 +14,9 @@ const Page = ({ params: { id } }) => {
     const { data } = useGetPortfolioDetails(id)
 
     const tabs = [
-        { name: 'Me', content: <MeContent portfolioId={id} data={data?.meData} /> },
-        { name: 'Education', content: <EducationDetails portfolioId={id} data={data?.educationData?.education} /> },
-        { name: 'Experience', content: 'Experience tab content goes here' },
+        { name: 'Me', content: <Me portfolioId={id} data={data?.meData} /> },
+        { name: 'Education', content: <Education portfolioId={id} data={data?.educationData?.education} /> },
+        { name: 'Experience', content: <Experience portfolioId={id} data={data?.experienceData?.workExperience} /> },
         { name: 'Skills', content: 'Skills tab content goes here' },
         { name: 'Projects', content: 'Projects tab content goes here' },
         { name: 'Certifications', content: 'Certifications tab content goes here' },
@@ -56,104 +58,4 @@ const Page = ({ params: { id } }) => {
     )
 }
 
-export default Page
-
-
-export const MeContent = ({ portfolioId, data }) => {
-
-    const localUser = useGetLocalItem('user');
-    const { mutate } = usePostMe(portfolioId);
-
-    const [stateData, setStateData] = useState({
-        fullName: data?.fullName || '',
-        email: data?.email || '',
-        phoneNumber: data?.phoneNumber || '',
-        address: data?.address || '',
-        tagline: data?.tagline || '',
-        bio: data?.bio || '',
-    });
-
-    // Update stateData when the data prop changes
-    useEffect(() => {
-        setStateData({
-            fullName: data?.fullName || '',
-            email: data?.email || '',
-            phoneNumber: data?.phoneNumber || '',
-            address: data?.address || '',
-            tagline: data?.tagline || '',
-            bio: data?.bio || '',
-        });
-    }, [data]);
-
-    const save = () => {
-        const updatedData = {
-            userId: localUser?.id,
-            portfolioId,
-            payload: { ...stateData }
-        };
-        mutate(updatedData);
-    }
-
-    return (
-        <div className='flex flex-col gap-4'>
-            <input type="text" placeholder="Enter name" className='h-10 p-4 rounded-xl' value={stateData.fullName} onChange={(e) => setStateData({ ...stateData, fullName: e.target.value })} />
-            <input type="email" placeholder="Email" className='h-10 p-4 rounded-xl' value={stateData.email} onChange={(e) => setStateData({ ...stateData, email: e.target.value })} />
-            <input type="number" placeholder="Phone Number" className='h-10 p-4 rounded-xl' value={stateData.phoneNumber} onChange={(e) => setStateData({ ...stateData, phoneNumber: e.target.value })} />
-            <textarea placeholder="Address" className='p-4 rounded-xl' value={stateData.address} onChange={(e) => setStateData({ ...stateData, address: e.target.value })} />
-            <input type="text" placeholder="tagline" className='h-10 p-4 rounded-xl' value={stateData.tagline} onChange={(e) => setStateData({ ...stateData, tagline: e.target.value })} />
-            <textarea placeholder="Bio" className='p-4 rounded-xl' value={stateData.bio} onChange={(e) => setStateData({ ...stateData, bio: e.target.value })} />
-            <button className='bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded' onClick={save}>Save</button>
-        </div>
-    )
-}
-
-export const EducationDetails = ({ portfolioId, data }) => {
-    const localUser = useGetLocalItem('user');
-    const { mutate } = usePostEducation(portfolioId);
-
-    const [educationList, setEducationList] = useState(data || [{ degree: '', institution: '', graduationYear: '' }]);
-
-    useEffect(() => {
-        setEducationList(data || [{ degree: '', institution: '', graduationYear: '' }]);
-    }, [data]);
-
-    const handleChange = (index, field, value) => {
-        const updatedList = [...educationList];
-        updatedList[index][field] = value;
-        setEducationList(updatedList);
-    };
-
-    const addEducation = () => {
-        setEducationList([...educationList, { degree: '', institution: '', graduationYear: '' }]);
-    };
-
-    const save = () => {
-        const updatedData = {
-            userId: localUser?.id,
-            portfolioId,
-            payload: educationList,
-        };
-        mutate(updatedData);
-    };
-
-    console.log(educationList)
-
-    return (
-        <>
-            {educationList?.map((education, index) => (
-                <div key={index} className='flex flex-col gap-4'>
-                    <input type="text" placeholder="Degree" className='h-10 p-4 rounded-xl' value={education?.degree} onChange={(e) => handleChange(index, 'degree', e.target.value)} />
-                    <input type="text" placeholder="Institution" className='h-10 p-4 rounded-xl' value={education?.institution} onChange={(e) => handleChange(index, 'institution', e.target.value)} />
-                    <input type="number" placeholder="Year" className='h-10 p-4 rounded-xl' value={education?.graduationYear} onChange={(e) => handleChange(index, 'graduationYear', e.target.value)} />
-                </div>))}
-            <button className='bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded'
-                onClick={addEducation}>
-                Add More
-            </button>
-            <button className='bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded'
-                onClick={save}>
-                Save
-            </button>
-        </>
-    );
-};
+export default Page;

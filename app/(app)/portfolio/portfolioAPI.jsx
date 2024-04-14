@@ -22,3 +22,7 @@ export const postMe = async (data) => {
 export const postEducation = async (data) => {
     return handelRequest(instance.post, `user/portfolio/education?u=${data?.userId}&p=${data?.portfolioId}`, data?.payload);
 }
+
+export const postExperience = async (data) => {
+    return handelRequest(instance.post, `user/portfolio/experience?u=${data?.userId}&p=${data?.portfolioId}`, data?.payload);
+}

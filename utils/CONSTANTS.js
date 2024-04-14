@@ -9,6 +9,7 @@ export const queryKey = {
 
     postMe: "postMe",
     postEducation: "postEducation",
+    postExperience: "postExperience",
 
     createPortfolio: "createPortfolio",
     getPortfolios: "getPortfolios",
