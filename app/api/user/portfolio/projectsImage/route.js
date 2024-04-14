@@ -1,8 +1,9 @@
 import portfolioModal from "@/model/portfolio";
 import userModal from "@/model/user";
+import { dbConnection } from "@/utils/Connections";
 import { failedResponse, InternalServerError, successReponseWithData } from "@/utils/responseHandler"
 import { uploadImage } from "@/utils/upload-images";
-
+await dbConnection();
 export const POST = async (req) => {
     try {
         const formData = await req.formData()

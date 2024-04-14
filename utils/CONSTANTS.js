@@ -13,6 +13,11 @@ export const queryKey = {
     postSkills: "postSkills",
     postProjects: "postProjects",
     postProjectImage: "postProjectImage",
+    postCertificates: "postCertificates",
+    postLanguages: "postLanguages",
+    postHobbies: "postHobbies",
+    postRefrences: "postRefrences",
+    postSocialLinks: "postSocialLinks",
 
     createPortfolio: "createPortfolio",
     getPortfolios: "getPortfolios",

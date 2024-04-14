@@ -1,7 +1,9 @@
 import portfolioModal from "@/model/portfolio";
 import projectModal from "@/model/project";
 import userModal from "@/model/user";
+import { dbConnection } from "@/utils/Connections";
 import { failedResponse, InternalServerError, successReponse } from "@/utils/responseHandler"
+await dbConnection();
 
 export const POST = async (req) => {
     try {

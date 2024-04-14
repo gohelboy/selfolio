@@ -8,6 +8,11 @@ import Me from './me'
 import Experience from './Experience'
 import Skills from './skills'
 import Project from './project'
+import Ceritificate from './ceritficate'
+import Language from './language'
+import Hobby from './hobby'
+import Refrence from './Refrence'
+import Social from './social'
 
 const Page = ({ params: { id } }) => {
 
@@ -21,12 +26,11 @@ const Page = ({ params: { id } }) => {
         { name: 'Experience', content: <Experience portfolioId={id} data={data?.experienceData?.workExperience} /> },
         { name: 'Skills', content: <Skills portfolioId={id} data={data?.skillData?.skills} /> },
         { name: 'Projects', content: <Project portfolioId={id} data={data?.projectData?.projects} /> },
-        { name: 'Certifications', content: 'Certifications tab content goes here' },
-        { name: 'VolunteerExperience', content: 'Volunteer Experience tab content goes here' },
-        { name: 'Languages', content: 'Languages tab content goes here' },
-        { name: 'InterestsHobbies', content: 'Interests / Hobbies tab content goes here' },
-        { name: 'References', content: 'References tab content goes here' },
-        { name: 'SocialLinks', content: 'Social Links tab content goes here' }
+        { name: 'Certifications', content: <Ceritificate portfolioId={id} data={data?.certificateData?.certifications} /> },
+        { name: 'Languages', content: <Language portfolioId={id} data={data?.languageData?.languages} /> },
+        { name: 'Intrest', content: <Hobby portfolioId={id} data={data?.hobbyData?.interestsHobbies} /> },
+        { name: 'References', content: <Refrence portfolioId={id} data={data?.refrenceData?.references} /> },
+        { name: 'SocialLinks', content: <Social portfolioId={id} data={data?.socialData?.socialMediaLinks} /> }
     ];
 
     const handleTabChange = (tabName) => {

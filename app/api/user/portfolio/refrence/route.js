@@ -1,5 +1,5 @@
-import experinceModal from "@/model/experience";
 import portfolioModal from "@/model/portfolio";
+import refrenceModal from "@/model/refrence";
 import userModal from "@/model/user";
 import { dbConnection } from "@/utils/Connections";
 import { failedResponse, InternalServerError, successReponse } from "@/utils/responseHandler"
@@ -10,31 +10,31 @@ export const POST = async (req) => {
     try {
         const userId = req.nextUrl.searchParams.get('u');
         const portfolioId = req.nextUrl.searchParams.get('p');
-        const experienceData = await req.json();
+        const refrenceData = await req.json();
         if (!userId || !portfolioId) return failedResponse('Invalid request');
         const user = await userModal.findById(userId);
         if (!user) return failedResponse('User not found');
         const portfolio = await portfolioModal.exists({ _id: portfolioId, user: userId });
         if (!portfolio) return failedResponse('You are not authorized to perform this action');
 
-        for (const experience of experienceData) {
-            if (experience?._id) {
-                const { _id, ...updatedExperience } = experience;
-                await experinceModal.findOneAndUpdate(
-                    { "portfolio": portfolioId, "workExperience._id": _id },
-                    { $set: { "workExperience.$": updatedExperience } },
+        for (const refrence of refrenceData) {
+            if (refrence?._id) {
+                const { _id, ...updatedRefrence } = refrence;
+                await refrenceModal.findOneAndUpdate(
+                    { "portfolio": portfolioId, "references._id": _id },
+                    { $set: { "references.$": updatedRefrence } },
                     { new: true }
                 );
             } else {
-                const newExpirence = { jobTitle: experience.jobTitle, companyName: experience.companyName, employmentDates: experience.employmentDates };
-                await experinceModal.findOneAndUpdate(
+                const newExpirence = { name: refrence.name, email: refrence.email, phoneNumber: refrence.phoneNumber };
+                await refrenceModal.findOneAndUpdate(
                     { "portfolio": portfolioId },
-                    { $push: { "workExperience": newExpirence } },
+                    { $push: { "references": newExpirence } },
                     { new: true, upsert: true }
                 );
             }
         }
-        return successReponse('experience updated successfully')
+        return successReponse('Language updated successfully')
     } catch (error) {
         return InternalServerError(error)
     }

@@ -1,40 +1,39 @@
-import experinceModal from "@/model/experience";
+
+import certificateModal from "@/model/certificate";
 import portfolioModal from "@/model/portfolio";
 import userModal from "@/model/user";
 import { dbConnection } from "@/utils/Connections";
-import { failedResponse, InternalServerError, successReponse } from "@/utils/responseHandler"
-
+import { failedResponse, InternalServerError, successReponse } from "@/utils/responseHandler";
 await dbConnection();
-
 export const POST = async (req) => {
     try {
         const userId = req.nextUrl.searchParams.get('u');
         const portfolioId = req.nextUrl.searchParams.get('p');
-        const experienceData = await req.json();
+        const certificateData = await req.json();
         if (!userId || !portfolioId) return failedResponse('Invalid request');
         const user = await userModal.findById(userId);
         if (!user) return failedResponse('User not found');
         const portfolio = await portfolioModal.exists({ _id: portfolioId, user: userId });
         if (!portfolio) return failedResponse('You are not authorized to perform this action');
 
-        for (const experience of experienceData) {
-            if (experience?._id) {
-                const { _id, ...updatedExperience } = experience;
-                await experinceModal.findOneAndUpdate(
-                    { "portfolio": portfolioId, "workExperience._id": _id },
-                    { $set: { "workExperience.$": updatedExperience } },
+        for (const certificate of certificateData) {
+            if (certificate?._id) {
+                const { _id, ...updatedCertificate } = certificate;
+                await certificateModal.findOneAndUpdate(
+                    { "portfolio": portfolioId, "certifications._id": _id },
+                    { $set: { "certifications.$": updatedCertificate } },
                     { new: true }
                 );
             } else {
-                const newExpirence = { jobTitle: experience.jobTitle, companyName: experience.companyName, employmentDates: experience.employmentDates };
-                await experinceModal.findOneAndUpdate(
+                const newCertificate = { certificationName: certificate.certificationName, issuingOrganization: certificate.issuingOrganization, certificationDate: certificate.certificationDate };
+                await certificateModal.findOneAndUpdate(
                     { "portfolio": portfolioId },
-                    { $push: { "workExperience": newExpirence } },
+                    { $push: { "certifications": newCertificate } },
                     { new: true, upsert: true }
                 );
             }
         }
-        return successReponse('experience updated successfully')
+        return successReponse('Education added successfully');
     } catch (error) {
         return InternalServerError(error)
     }

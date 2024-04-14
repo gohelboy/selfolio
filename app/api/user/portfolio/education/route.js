@@ -1,8 +1,9 @@
 import educationModal from "@/model/education";
 import portfolioModal from "@/model/portfolio";
 import userModal from "@/model/user";
+import { dbConnection } from "@/utils/Connections";
 import { failedResponse, InternalServerError, successReponse } from "@/utils/responseHandler";
-
+await dbConnection();
 export const POST = async (req) => {
     try {
         const userId = req.nextUrl.searchParams.get('u');

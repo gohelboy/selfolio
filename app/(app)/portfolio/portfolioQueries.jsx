@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from "@tanstack/react-query"
-import { deletePortfolio, getPorfolios, getPostfolioDetails, postCreatePorfolio, postEducation, postExperience, postMe, postProjectImage, postProjects, postSkills } from "./portfolioAPI"
+import { deletePortfolio, getPorfolios, getPostfolioDetails, postCertificates, postCreatePorfolio, postEducation, postExperience, postHobbies, postLanguages, postMe, postProjectImage, postProjects, postRefrences, postSkills, postSocialLinks } from "./portfolioAPI"
 import { queryKey } from "@/utils/CONSTANTS"
 import { queryClient } from "@/app/_components/QueryProviderWrapper"
 
@@ -91,5 +91,55 @@ export const usePostProjectImage = (config) => {
         mutationKey: [queryKey?.postProjectImage],
         mutationFn: (data) => postProjectImage(data),
         ...config
+    })
+}
+
+export const usePostCertificates = (portfolioId) => {
+    return useMutation({
+        mutationKey: [queryKey?.postCertificates],
+        mutationFn: (data) => postCertificates(data),
+        onSuccess: () => {
+            queryClient.invalidateQueries([queryKey.getPortfolioDetails + portfolioId]);
+        }
+    })
+}
+
+export const usePostLanguages = (portfolioId) => {
+    return useMutation({
+        mutationKey: [queryKey?.postLanguages],
+        mutationFn: (data) => postLanguages(data),
+        onSuccess: () => {
+            queryClient.invalidateQueries([queryKey.getPortfolioDetails + portfolioId]);
+        }
+    })
+}
+
+export const usePostHobbies = (portfolioId) => {
+    return useMutation({
+        mutationKey: [queryKey?.postHobbies],
+        mutationFn: (data) => postHobbies(data),
+        onSuccess: () => {
+            queryClient.invalidateQueries([queryKey.getPortfolioDetails + portfolioId]);
+        }
+    })
+}
+
+export const usePostRefrences = (portfolioId) => {
+    return useMutation({
+        mutationKey: [queryKey?.postRefrences],
+        mutationFn: (data) => postRefrences(data),
+        onSuccess: () => {
+            queryClient.invalidateQueries([queryKey.getPortfolioDetails + portfolioId]);
+        }
+    })
+}
+
+export const usePostSocialLinks = (portfolioId) => {
+    return useMutation({
+        mutationKey: [queryKey?.postSocialLinks],
+        mutationFn: (data) => postSocialLinks(data),
+        onSuccess: () => {
+            queryClient.invalidateQueries([queryKey.getPortfolioDetails + portfolioId]);
+        }
     })
 }

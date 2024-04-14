@@ -3,7 +3,6 @@ import meModal from "@/model/aboutMe";
 import portfolioModal from "@/model/portfolio";
 import { dbConnection } from "@/utils/Connections";
 import { failedResponse, InternalServerError, successReponse } from "@/utils/responseHandler";
-
 await dbConnection();
 
 export const POST = async (req) => {

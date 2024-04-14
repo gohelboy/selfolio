@@ -37,3 +37,23 @@ export const postProjects = async (data) => {
 export const postProjectImage = async (data) => {
     return handelRequest(instance.post, `user/portfolio/projectsImage`, data);
 }
+
+export const postCertificates = async (data) => {
+    return handelRequest(instance.post, `user/portfolio/certificate?u=${data?.userId}&p=${data?.portfolioId}`, data?.payload);
+}
+
+export const postLanguages = async (data) => {
+    return handelRequest(instance.post, `user/portfolio/language?u=${data?.userId}&p=${data?.portfolioId}`, data?.payload);
+}
+
+export const postHobbies = async (data) => {
+    return handelRequest(instance.post, `user/portfolio/hobby?u=${data?.userId}&p=${data?.portfolioId}`, data?.payload);
+}
+
+export const postRefrences = async (data) => {
+    return handelRequest(instance.post, `user/portfolio/refrence?u=${data?.userId}&p=${data?.portfolioId}`, data?.payload);
+}
+
+export const postSocialLinks = async (data) => {
+    return handelRequest(instance.post, `user/portfolio/social?u=${data?.userId}&p=${data?.portfolioId}`, data?.payload);
+}

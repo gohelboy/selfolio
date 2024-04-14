@@ -2,7 +2,7 @@
 import useGetLocalItem from "@/hooks/useGetLocalItem";
 import { useEffect, useState } from "react";
 import { usePostProjectImage, usePostProjects } from "../portfolioQueries";
-import { queryClient } from "@/app/_components/QueryProviderWrapper";
+import Image from "next/image";
 
 const Project = ({ portfolioId, data }) => {
     const localUser = useGetLocalItem('user');
@@ -60,7 +60,7 @@ const Project = ({ portfolioId, data }) => {
     return (
         <>
             {projects?.map((project, index) => (
-                <div key={index} className='flex flex-col gap-4'>
+                <div key={index} className='flex flex-wrap gap-4'>
                     <input
                         type="text"
                         placeholder="Project name"
@@ -88,8 +88,9 @@ const Project = ({ portfolioId, data }) => {
                     <input
                         type="file"
                         accept="image/*"
-                        className='h-10 p-4 rounded-xl'
+                        className=' p-4 rounded-xl'
                         onChange={(e) => handleImageChange(index, 'projectImage', e)} />
+                    <Image src={project?.projectImage || ''} alt="project image" width={200} height={200} />
                 </div>
             ))}
             <button className='bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mt-5'
