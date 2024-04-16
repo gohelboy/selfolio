@@ -11,7 +11,7 @@ const Education = () => {
         }
     ];
     return (
-        <section className='flex mx-5 pt-10 md:w-[1080px]'>
+        <section className='flex px-5 pt-10 w-full md:max-w-[1140px] 2xl:max-w-[1440px]'>
             <div className='flex flex-col gap-5 w-full '>
                 <h2 className='font-semibold text-xl'>Education</h2>
                 <div className='flex flex-col gap-2'>

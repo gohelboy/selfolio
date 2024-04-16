@@ -3,7 +3,7 @@ import React from 'react'
 
 const Certificates = () => {
     return (
-        <section className='pt-10 mx-5 md:w-[1080px]'>
+        <section className='pt-10 px-5  w-full md:max-w-[1140px] 2xl:max-w-[1440px]'>
             <div className='flex flex-col gap-5 w-full '>
                 <h2 className='font-semibold text-xl'>Cerificates</h2>
                 <div className='grid grid-cols-2 md:grid-cols-3 gap-4'>

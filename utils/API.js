@@ -1,5 +1,5 @@
 import axios from 'axios'
-const BASE_API_URL = 'https://selfolio.vercel.app/api'
+const BASE_API_URL = 'http://localhost:3000/api'
 export const instance = axios.create({ baseURL: BASE_API_URL });
 
 export const handelRequest = async (method, endpoint, payload = {}) => {

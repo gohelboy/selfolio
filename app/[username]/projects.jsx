@@ -3,10 +3,10 @@ import Image from 'next/image'
 
 const Projects = () => {
     return (
-        <section id='projects' className='pt-10 mx-5 md:w-[1080px]'>
+        <section id='projects' className='pt-10 px-5 w-full md:max-w-[1140px] 2xl:max-w-[1440px]'>
             <div className='flex flex-col gap-5 w-full'>
                 <h2 className='font-semibold text-xl'>Projects</h2>
-                <div className='flex flex-col gap-4 md:grid md:grid-cols-2'>
+                <div className='flex flex-col gap-4 md:grid md:grid-cols-2 2xl:grid-cols-3'>
                     <div className='flex flex-col gap-2 md:gap-4 p-3 md:p-4 bg-neutral-200 rounded-2xl'>
                         <Image src={"/ppholder.webp"} width={400} height={200} alt="logo" className='object-cover rounded-lg md:w-full' />
                         <div className='flex flex-col gap-2'>
