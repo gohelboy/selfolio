@@ -14,7 +14,7 @@ const Projects = () => {
                                 <div className='font-semibold text-lg'>Project Name</div>
                                 <button className='bg-slate-700 text-white px-4 py-2 rounded-lg hover:bg-slate-500 transition-all flex items-center'><ArrowUpLeft />Visit</button>
                             </div>
-                            <p className='text-sm text-gray-500'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, </p>
+                            <p className='text-sm text-gray-500'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, </p>
                             <div className='flex flex-wrap gap-1'>
                                 <span>HTML</span>
                                 <span>CSS</span>
@@ -31,7 +31,7 @@ const Projects = () => {
                                 <div className='font-semibold text-lg'>Project Name</div>
                                 <button className='bg-slate-700 text-white px-4 py-2 rounded-lg hover:bg-slate-500 transition-all flex items-center'><ArrowUpLeft />Visit</button>
                             </div>
-                            <p className='text-sm text-gray-500'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, </p>
+                            <p className='text-sm text-gray-500'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, </p>
                             <div className='flex flex-wrap gap-1'>
                                 <span>HTML</span>
                                 <span>CSS</span>
@@ -48,7 +48,7 @@ const Projects = () => {
                                 <div className='font-semibold text-lg'>Project Name</div>
                                 <button className='bg-slate-700 text-white px-4 py-2 rounded-lg hover:bg-slate-500 transition-all flex items-center'><ArrowUpLeft />Visit</button>
                             </div>
-                            <p className='text-sm text-gray-500'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, </p>
+                            <p className='text-sm text-gray-500'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, </p>
                             <div className='flex flex-wrap gap-1'>
                                 <span>HTML</span>
                                 <span>CSS</span>
