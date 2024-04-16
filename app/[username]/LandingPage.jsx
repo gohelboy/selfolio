@@ -4,7 +4,7 @@ import React from 'react'
 const LandingPage = () => {
     const data = {
         name: 'Jack Gyllenhaal',
-        title: 'Software Engineer',
+        title: 'Movie Actor',
         tagline: 'Actor who make you think screen is reality.',
     }
     return (
@@ -17,7 +17,7 @@ const LandingPage = () => {
                 <div className='flex flex-col items-center justify-center w-full'>
                     <h1 className='font-bold text-3xl md:text-5xl'>{data?.name}</h1>
                     <p className='text-gray-500 md:text-xl'>({data?.title})</p>
-                    <p className='text-gray-500 md:text-xl md:mt-4'>{data?.tagline}</p>
+                    <p className='text-gray-500 md:text-lg md:mt-4'>{data?.tagline}</p>
                 </div>
             </div>
         </section>

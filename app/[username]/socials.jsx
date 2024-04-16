@@ -3,7 +3,7 @@ import React from 'react'
 
 const Socials = () => {
     return (
-        <section className='mt-10 mx-5'>
+        <section id='contact' className='pt-10 mx-5'>
             <div className='flex flex-col gap-5 w-full '>
                 <h2 className='font-semibold text-xl'>Connect with me</h2>
                 <div className='flex gap-3'>

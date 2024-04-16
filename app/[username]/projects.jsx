@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const Projects = () => {
     return (
-        <section className='mt-10 mx-5 md:w-[1080px]'>
+        <section id='projects' className='pt-10 mx-5 md:w-[1080px]'>
             <div className='flex flex-col gap-5 w-full'>
                 <h2 className='font-semibold text-xl'>Projects</h2>
                 <div className='flex flex-col gap-4 md:grid md:grid-cols-2'>
