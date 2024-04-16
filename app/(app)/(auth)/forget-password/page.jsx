@@ -4,7 +4,8 @@ import { useForgetPasswordLink, useResetPassword } from '../authQueries';
 import { useSearchParams } from 'next/navigation';
 
 const ForgetPassword = () => {
-    const token = useSearchParams().get('token');
+    const searchParams = useSearchParams();
+    const token = searchParams.get('token');
     const [email, setEmail] = useState('');
 
     const { mutate } = useForgetPasswordLink()
