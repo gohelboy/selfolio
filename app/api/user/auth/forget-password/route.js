@@ -1,28 +1,33 @@
+import userModal from "@/model/user";
+import { dbConnection } from "@/utils/Connections";
+import { forgetPasswordLinkTemplate } from "@/utils/emailTemplates";
+import { sendMail } from "@/utils/helper";
+import { failedResponse, InternalServerError, successReponse } from "@/utils/responseHandler";
 import bcrypt from "bcrypt";
 import JWT from "jsonwebtoken";
-import userModal from "../../../../../models/user";
-import dbConnection from "../../../../../utils/Connections";
-import { forgetPasswordLinkTemplate } from "../../../../../utils/emailTemplates";
-import { sendMail } from "../../../../../utils/helper";
-import { failedResponse, successReponse } from "../../../../../utils/responseHandler";
 
 await dbConnection();
 
 export const POST = async (request) => {
-    const { email } = await request.json();
-    if (!email) return failedResponse("Please provide email");
+    try {
+        const { email } = await request.json();
+        if (!email) return failedResponse("Please provide email");
 
-    const user = await userModal.findOne({ email });
-    if (!user) return failedResponse("user not found");
-    const token = JWT.sign({ email: user?.email, id: user?.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        const user = await userModal.findOne({ email });
+        if (!user) return failedResponse("user not found");
+        const token = JWT.sign({ email: user?.email, id: user?.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-    const payload = {
-        link: `http://localhost:3000/u/forget-password?token=${token}`,
-        expiry: "1 hour"
+        const payload = {
+            link: `http://localhost:3000/u/forget-password?token=${token}`,
+            expiry: "1 hour"
+        }
+        await sendMail(email, 'Forget Password', forgetPasswordLinkTemplate(payload));
+
+        return successReponse(`we have sent password reset link to ${email}`);
+    } catch (error) {
+        return InternalServerError(error)
     }
-    await sendMail(email, 'Forget Password', forgetPasswordLinkTemplate(payload));
 
-    return successReponse(`we have sent password reset link to ${email}`);
 }
 
 export const PATCH = async (request) => {

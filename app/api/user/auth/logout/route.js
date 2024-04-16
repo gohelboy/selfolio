@@ -1,5 +1,5 @@
+import { InternalServerError, successReponse } from "@/utils/responseHandler";
 import { cookies } from "next/headers";
-import { InternalServerError, successReponse } from "../../../../../utils/responseHandler";
 
 export const GET = async (req, res) => {
     try {

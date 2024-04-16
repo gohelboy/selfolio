@@ -1,10 +1,10 @@
+import userModal from "@/model/user";
+import { dbConnection } from "@/utils/Connections";
+import { registerTemplate } from "@/utils/emailTemplates";
+import { sendMail } from "@/utils/helper";
+import { failedResponse, InternalServerError, successReponse } from "@/utils/responseHandler";
 import bcrypt from "bcrypt";
 import JWT from "jsonwebtoken";
-import userModal from "../../../../../model/user"
-import { dbConnection } from "../../../../../utils/Connections";
-import { registerTemplate } from "../../../../../utils/emailTemplates";
-import { sendMail } from "../../../../../utils/helper";
-import { failedResponse, InternalServerError, successReponse } from "../../../../../utils/responseHandler";
 
 await dbConnection();
 
