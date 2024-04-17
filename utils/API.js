@@ -1,6 +1,7 @@
 import axios from 'axios'
 const BASE_API_URL = 'http://localhost:3000/api'
-export const instance = axios.create({ baseURL: BASE_API_URL });
+const temp = 'http://localhost:3000/api'
+export const instance = axios.create({ baseURL: temp });
 
 export const handelRequest = async (method, endpoint, payload = {}) => {
     try {

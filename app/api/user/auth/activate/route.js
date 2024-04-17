@@ -1,6 +1,6 @@
 import userModal from "@/model/user";
 import { dbConnection } from "@/utils/Connections";
-import { failedResponse, InternalServerError, successReponseWithData } from "@/utils/responseHandler";
+import { failedResponse, InternalServerError, successResponseWithData } from "@/utils/responseHandler";
 import JWT from "jsonwebtoken";
 import { cookies } from "next/headers";
 
@@ -27,7 +27,7 @@ export const POST = async (req) => {
         const newToken = JWT.sign({ id: user?.id, email, verified: user?.verified }, process.env.JWT_SECRET);
 
         cookies().set("token", newToken, { httpOnly: true, secure: true });
-        return successReponseWithData({ id: user?.id, email }, "Account verified successfully");
+        return successResponseWithData({ id: user?.id, email }, "Account verified successfully");
 
 
     } catch (error) {

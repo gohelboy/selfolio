@@ -2,7 +2,7 @@ import userModal from "@/model/user";
 import { dbConnection } from "@/utils/Connections";
 import { registerTemplate } from "@/utils/emailTemplates";
 import { sendMail } from "@/utils/helper";
-import { failedResponse, InternalServerError, successReponse } from "@/utils/responseHandler";
+import { failedResponse, InternalServerError, successResponse } from "@/utils/responseHandler";
 import bcrypt from "bcrypt";
 import JWT from "jsonwebtoken";
 
@@ -23,7 +23,7 @@ export const POST = async (req, res) => {
                 link: `http://localhost:3000/activate?token=${token}`
             }
             await sendMail(email, "Active Your Account", registerTemplate(emailPayload));
-            return successReponse("Please check email for verification link");
+            return successResponse("Please check email for verification link");
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -36,7 +36,7 @@ export const POST = async (req, res) => {
         const emailPayload = { email, link: `http://localhost:3000/activate?token=${token}` }
         await sendMail(email, "Active Your Account", registerTemplate(emailPayload));
 
-        return successReponse("Please check email for verification link");
+        return successResponse("Please check email for verification link");
     } catch (err) {
         return InternalServerError(err);
     }

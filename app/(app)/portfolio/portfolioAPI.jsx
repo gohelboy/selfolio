@@ -11,8 +11,8 @@ export const deletePortfolio = async (data) => {
     return handelRequest(instance.delete, `user/portfolio?u=${data?.userId}&p=${data?.portfolioId}`);
 }
 
-export const getPostfolioDetails = async (id) => {
-    return handelRequest(instance.get, `user/portfolio/${id}`);
+export const getPostfolioDetails = async (name) => {
+    return handelRequest(instance.get, `user/portfolio/${name}`);
 }
 
 export const postMe = async (data) => {

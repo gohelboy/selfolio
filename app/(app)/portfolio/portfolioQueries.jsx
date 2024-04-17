@@ -28,12 +28,12 @@ export const useDeletePortfolio = () => {
         }
     })
 }
-export const useGetPortfolioDetails = (id) => {
+export const useGetPortfolioDetails = (name) => {
     return useQuery({
-        queryKey: [queryKey.getPortfolioDetails + id],
-        queryFn: () => getPostfolioDetails(id),
+        queryKey: [queryKey.getPortfolioDetails + name],
+        queryFn: () => getPostfolioDetails(name),
         select: data => data?.data,
-        id: !!id
+        id: !!name
     })
 }
 

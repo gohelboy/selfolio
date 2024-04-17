@@ -52,8 +52,8 @@ const Home = () => {
                         <div className='flex items-center justify-between w-full bg-gray-500  hover:bg-gray-700 text-white font-bold  p-4 rounded-2xl'>
                             <div> {portfolio?.name} </div>
                             <div className='flex items-center justify-center gap-4'>
-                                <Link href={routes.portfolio + "/" + portfolio?._id} className='cursor-pointer'>Edit</Link>
-                                <button className='cursor-pointer' onClick={() => removePortfolio(portfolio?._id)}>Delete</button>
+                                <Link href={routes.portfolio + "/" + portfolio?.name} className='cursor-pointer'>Edit</Link>
+                                <button className='cursor-pointer' onClick={() => removePortfolio(portfolio?.name)}>Delete</button>
                             </div>
                         </div>
                     </div>)}

@@ -2,7 +2,7 @@ import userModal from "@/model/user";
 import { dbConnection } from "@/utils/Connections";
 import { forgetPasswordLinkTemplate } from "@/utils/emailTemplates";
 import { sendMail } from "@/utils/helper";
-import { failedResponse, InternalServerError, successReponse } from "@/utils/responseHandler";
+import { failedResponse, InternalServerError, successResponse } from "@/utils/responseHandler";
 import bcrypt from "bcrypt";
 import JWT from "jsonwebtoken";
 
@@ -23,7 +23,7 @@ export const POST = async (request) => {
         }
         await sendMail(email, 'Forget Password', forgetPasswordLinkTemplate(payload));
 
-        return successReponse(`we have sent password reset link to ${email}`);
+        return successResponse(`we have sent password reset link to ${email}`);
     } catch (error) {
         return InternalServerError(error)
     }
@@ -42,5 +42,5 @@ export const PATCH = async (request) => {
     if (!payload) return failedResponse("invalid token");
     await userModal.findOneAndUpdate({ _id: payload?.id, email: payload?.email }, { password: newHashedPassword });
 
-    return successReponse("Password reset successfully");
+    return successResponse("Password reset successfully");
 }

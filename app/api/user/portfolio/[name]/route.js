@@ -10,7 +10,7 @@ import refrenceModal from "@/model/refrence";
 import skillModal from "@/model/skills";
 import socialModal from "@/model/social";
 import { dbConnection } from "@/utils/Connections";
-import { failedResponse, InternalServerError, successReponseWithData } from "@/utils/responseHandler";
+import { failedResponse, InternalServerError, successResponseWithData } from "@/utils/responseHandler";
 
 
 await dbConnection()
@@ -18,9 +18,9 @@ await dbConnection()
 export const GET = async (req, { params }) => {
     try {
 
-        const { id } = params;
-        if (!id) return failedResponse("invalid request");
-        const portfolio = await portfolioModal.findById(id);
+        const { name } = params;
+        if (!name) return failedResponse("invalid request");
+        const portfolio = await portfolioModal.findOne({ name: name });
         if (!portfolio) return failedResponse("Portfolio not found");
 
         const [meData, educationData, experienceData, skillData, projectData, certificateData, languageData, hobbyData, refrenceData, socialData] = await Promise.all([
@@ -49,7 +49,7 @@ export const GET = async (req, { params }) => {
             socialData,
         };
 
-        return successReponseWithData(portfolioData, "Portfolio fetched successfully");
+        return successResponseWithData(portfolioData, "Portfolio fetched successfully");
     } catch (error) {
         return InternalServerError(error)
     }

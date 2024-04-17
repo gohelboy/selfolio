@@ -2,7 +2,7 @@ import userModal from "@/model/user";
 import { dbConnection } from "@/utils/Connections";
 import { registerTemplate } from "@/utils/emailTemplates";
 import { sendMail } from "@/utils/helper";
-import { failedResponse, InternalServerError, successReponseWithData } from "@/utils/responseHandler";
+import { failedResponse, InternalServerError, successResponseWithData } from "@/utils/responseHandler";
 import bcrypt from "bcrypt";
 import JWT from 'jsonwebtoken';
 import { cookies } from "next/headers";
@@ -33,7 +33,7 @@ export const POST = async (request) => {
         if (!isMatch) return failedResponse('Incorrect password');
 
         cookies().set('token', token, { httpOnly: true, secure: true });
-        return successReponseWithData({ email: user?.email, id: user?.id }, 'Logged in successfully');
+        return successResponseWithData({ email: user?.email, id: user?.id }, 'Logged in successfully');
     } catch (error) {
         return InternalServerError(error)
     }

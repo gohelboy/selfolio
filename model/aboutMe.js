@@ -10,6 +10,10 @@ const MeSchema = new Schema({
         type: String,
         required: true
     },
+    occupation: {
+        type: String,
+        required: true,
+    },
     email: {
         type: String,
         required: true

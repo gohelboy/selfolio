@@ -14,23 +14,23 @@ import Hobby from './hobby'
 import Refrence from './Refrence'
 import Social from './social'
 
-const Page = ({ params: { id } }) => {
+const Page = ({ params: { name } }) => {
 
     const [activeTab, setActiveTab] = useState('Me');
 
-    const { data } = useGetPortfolioDetails(id)
+    const { data } = useGetPortfolioDetails(name)
 
     const tabs = [
-        { name: 'Me', content: <Me portfolioId={id} data={data?.meData} /> },
-        { name: 'Education', content: <Education portfolioId={id} data={data?.educationData?.education} /> },
-        { name: 'Experience', content: <Experience portfolioId={id} data={data?.experienceData?.workExperience} /> },
-        { name: 'Skills', content: <Skills portfolioId={id} data={data?.skillData?.skills} /> },
-        { name: 'Projects', content: <Project portfolioId={id} data={data?.projectData?.projects} /> },
-        { name: 'Certifications', content: <Ceritificate portfolioId={id} data={data?.certificateData?.certifications} /> },
-        { name: 'Languages', content: <Language portfolioId={id} data={data?.languageData?.languages} /> },
-        { name: 'Intrest', content: <Hobby portfolioId={id} data={data?.hobbyData?.interestsHobbies} /> },
-        { name: 'References', content: <Refrence portfolioId={id} data={data?.refrenceData?.references} /> },
-        { name: 'SocialLinks', content: <Social portfolioId={id} data={data?.socialData?.socialMediaLinks} /> }
+        { name: 'Me', content: <Me portfolioId={name} data={data?.meData} /> },
+        { name: 'Education', content: <Education portfolioId={name} data={data?.educationData?.education} /> },
+        { name: 'Experience', content: <Experience portfolioId={name} data={data?.experienceData?.workExperience} /> },
+        { name: 'Skills', content: <Skills portfolioId={name} data={data?.skillData?.skills} /> },
+        { name: 'Projects', content: <Project portfolioId={name} data={data?.projectData?.projects} /> },
+        { name: 'Certifications', content: <Ceritificate portfolioId={name} data={data?.certificateData?.certifications} /> },
+        { name: 'Languages', content: <Language portfolioId={name} data={data?.languageData?.languages} /> },
+        { name: 'Intrest', content: <Hobby portfolioId={name} data={data?.hobbyData?.interestsHobbies} /> },
+        { name: 'References', content: <Refrence portfolioId={name} data={data?.refrenceData?.references} /> },
+        { name: 'SocialLinks', content: <Social portfolioId={name} data={data?.socialData?.socialMediaLinks} /> }
     ];
 
     const handleTabChange = (tabName) => {

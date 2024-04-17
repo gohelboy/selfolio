@@ -8,13 +8,19 @@ const skillsSchema = new Schema({
     },
     skills: [
         {
-            name: {
+            skillType: {
                 type: String,
-                required: true
             },
+            names: [
+                {
+                    type: String,
+                    required: false,
+                }
+            ]
         }
-    ],
-}, { timestamps: true })
+    ]
+}, { timestamps: true });
 
-const skillModal = models.Skill || model('Skill', skillsSchema);
-export default skillModal;
+const skillModel = models.Skill || model('Skill', skillsSchema);
+
+export default skillModel;

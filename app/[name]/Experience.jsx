@@ -1,19 +1,4 @@
-const Experience = () => {
-    const data = [
-        {
-            company: 'Drive - Google LLC',
-            role: 'SDE Intern',
-            year: '2022'
-        }, {
-            company: 'Drive - Google LLC',
-            role: 'SDE Intern',
-            year: '2022'
-        }, {
-            company: 'Drive - Google LLC',
-            role: 'SDE Intern',
-            year: '2022'
-        }
-    ];
+const Experience = ({ data }) => {
     return (
         <section className='pt-10 px-5 w-full md:max-w-[1140px] 2xl:max-w-[1440px]'>
             <div className='flex flex-col gap-5 w-full '>
@@ -21,10 +6,10 @@ const Experience = () => {
                 <div className='flex flex-col gap-2'>
                     {data?.map((exp, i) => {
                         return <div key={i} className='flex flex-col'>
-                            <div>{exp.company}</div>
+                            <div>{exp?.companyName}</div>
                             <div className='flex items-center justify-between text-gray-500 text-sm'>
-                                <p>{exp.role}</p>
-                                <p>{exp.year}</p>
+                                <p>{exp?.jobTitle}</p>
+                                <p>{exp?.employmentDates}</p>
                             </div>
                         </div>
                     })}

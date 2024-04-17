@@ -16,6 +16,10 @@ body {
   color: var(--text-color);
 }
 
+img {
+  width: auto;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

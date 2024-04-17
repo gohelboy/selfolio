@@ -1,10 +1,10 @@
-import { InternalServerError, successReponse } from "@/utils/responseHandler";
+import { InternalServerError, successResponse } from "@/utils/responseHandler";
 import { cookies } from "next/headers";
 
 export const GET = async (req, res) => {
     try {
         cookies().delete('token');
-        return successReponse('logged out')
+        return successResponse('logged out')
 
     } catch (error) {
         return InternalServerError(error)
