@@ -2,6 +2,7 @@ import { useMutation, useQuery } from "@tanstack/react-query"
 import { deletePortfolio, getPorfolios, getPostfolioDetails, postCertificates, postCreatePorfolio, postEducation, postExperience, postHobbies, postLanguages, postMe, postProjectImage, postProjects, postRefrences, postSkills, postSocialLinks } from "./portfolioAPI"
 import { queryKey } from "@/utils/CONSTANTS"
 import { queryClient } from "@/app/_components/QueryProviderWrapper"
+import { routes } from "@/utils/routes"
 
 export const useCreatePortfolio = (config) => {
     return useMutation({
@@ -32,7 +33,10 @@ export const useGetPortfolioDetails = (name) => {
     return useQuery({
         queryKey: [queryKey.getPortfolioDetails + name],
         queryFn: () => getPostfolioDetails(name),
-        select: data => data?.data,
+        select: data => {
+            if (!data?.status) window.location.href = routes.login;
+            return data?.data
+        },
         id: !!name
     })
 }

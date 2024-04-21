@@ -3,7 +3,6 @@ import Link from 'next/link'
 import React from 'react'
 
 const Socials = ({ data }) => {
-    console.log(data)
     return (
         <section id='contact' className='pt-10 px-5 w-full md:max-w-[1140px] 2xl:max-w-[1440px]'>
             <div className='flex flex-col gap-5 w-full'>
