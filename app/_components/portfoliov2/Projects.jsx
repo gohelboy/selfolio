@@ -25,7 +25,6 @@ const Projects = () => {
         <motion.section
             initial={{ width: 'fit-content' }}
             whileInView={{ width: "100%" }}
-            viewport={{ amount: 0.5 }}
             className='flex justify-center rounded-3xl bg-[#ADFF26] my-40'>
             <div className='w-full rounded-3xl md:max-w-[1140px] 2xl:max-w-[1440px] bg-[#ADFF26] p-8 pb-16 flex flex-col gap-10'>
                 <div className='flex items-center justify-between'>

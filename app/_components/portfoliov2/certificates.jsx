@@ -32,8 +32,6 @@ const Certificates = () => {
                             </div>
                         </motion.div>
                     ))}
-
-
                 </div>
             </div>
         </section>
