@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const Education = () => {
     return (
-        <section className='flex w-full md:max-w-[1140px] 2xl:max-w-[1440px] my-40 px-5 md:px-0'>
+        <section className='flex w-full md:max-w-[1140px] 2xl:max-w-[1440px] py-40 px-5 md:px-0'>
             <div className='grid md:grid-cols-2 gap-7 md:gap-0 items-center w-full'>
                 <motion.h1
                     initial={{ x: -25, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }}

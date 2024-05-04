@@ -4,12 +4,15 @@ import Link from 'next/link'
 import React from 'react'
 
 import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
 
-const Contact = () => {
+const Contact = ({ theme }) => {
     return (
-        <motion.section
-            className='px-4 flex w-full md:max-w-[1140px] 2xl:max-w-[1440px] my-20 2xl:my-40'>
-            <div className='flex md:h-[500px] 2xl:h-[600px] rounded-xl md:rounded-3xl flex-col gap-14 w-full bg-gradient-to-t from-[#0f0f0f] to-[#454545] text-white p-4 md:p-6 2xl:p-8'>
+        <motion.section id="contact"
+            className='px-4 flex w-full md:max-w-[1140px] 2xl:max-w-[1440px] my-20 2xl:py-40'>
+            <div className={cn('flex md:h-[500px] 2xl:h-[600px] rounded-xl md:rounded-3xl flex-col gap-14 w-full bg-gradient-to-t from-[#0f0f0f] to-[#454545] text-white p-4 md:p-6 2xl:p-8'
+                , theme === 'dark' ? " from-[#0f0f0f] to-[#202020]" : ""
+            )}>
                 <div className='grid grid-cols-1 md:grid-cols-2 h-full gap-4 md:gap-2'>
                     <div className='flex flex-col justify-between '>
                         <div className='flex flex-col gap-2'>

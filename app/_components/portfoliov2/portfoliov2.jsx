@@ -1,6 +1,5 @@
-
-
-
+'use client'
+import { useState } from "react"
 import Bio from "./Bio"
 import Certificates from "./certificates"
 import Contact from "./Contact"
@@ -12,21 +11,25 @@ import Navbar from "./Navbar"
 import Projects from "./Projects"
 import Refrences from "./Refrences"
 import Skills from "./Skills"
+import { cn } from "@/lib/utils"
 
 const PortfolioV2 = () => {
+
+    const [themeMode, setThemeMode] = useState(localStorage.getItem('theme') || 'light');
+
     return (
-        <main className="flex flex-col items-center">
-            <Navbar />
-            <LandingSection />
-            <Bio />
+        <main className={cn("flex flex-col items-center", themeMode === 'dark' ? 'text-white bg-[#111111]' : 'text-black')}>
+            <Navbar theme={themeMode} setTheme={setThemeMode} />
+            <LandingSection theme={themeMode} />
+            <Bio theme={themeMode} />
             <Education />
             <Experience />
-            <Skills />
+            <Skills theme={themeMode} />
             <Projects />
-            <Certificates />
-            <Refrences />
-            <Contact />
-            <Footer />
+            <Certificates theme={themeMode} />
+            <Refrences theme={themeMode} />
+            <Contact theme={themeMode} />
+            <Footer theme={themeMode} />
         </main>
     )
 }

@@ -3,10 +3,11 @@ import { Mail, Phone } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
 
-const Refrences = () => {
+const Refrences = ({ theme }) => {
     return (
-        <section className='px-4 md:p-0 flex w-full md:max-w-[1140px] 2xl:max-w-[1440px] my-40'>
+        <section className='px-4 md:p-0 flex w-full md:max-w-[1140px] 2xl:max-w-[1440px] py-40'>
             <div className='flex flex-col gap-14 w-full'>
                 <motion.h1
                     initial={{ x: -100, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }}
@@ -17,9 +18,9 @@ const Refrences = () => {
                         initial={{ x: "-100px", opacity: 0 }}
                         whileInView={{ x: "0px", opacity: 1 }}
                         transition={{ delay: 0.1 * i }}
-                        className='group border-l-8 border-l-[#ADFF26] bg-slate-50 border  items-center justify-between p-5 rounded-2xl flex'>
+                        className={cn('bg-slate-50 border items-center justify-between p-5 rounded-2xl flex', theme === 'dark' ? "bg-[#1a1a1a] border-gray-900" : "")}>
                         <div>
-                            <h4 className='font-semibold md:text-lg 2xl:text-2xl'>Sundar Pichai</h4>
+                            <h4 className={cn('font-semibold md:text-lg 2xl:text-2xl', theme === 'dark' ? "text-white" : "text-black")}>Sundar Pichai</h4>
                             <span className='text-gray-500 text-sm 2xl:text-lg'>CEO google</span>
                         </div>
                         <div className='flex gap-2'>

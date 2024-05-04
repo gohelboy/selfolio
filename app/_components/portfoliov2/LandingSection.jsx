@@ -3,10 +3,11 @@ import { ArrowUpFromDot } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
 import { motion, useScroll, useTransform } from "framer-motion"
+import { cn } from '@/lib/utils'
 
-const LandingSection = () => {
+const LandingSection = ({ theme }) => {
     const { scrollYProgress } = useScroll()
-    const rotate = useTransform(scrollYProgress, [0, 0.05], [0, 180])
+    const rotate = useTransform(scrollYProgress, [0, 0.05], [0, 180]);
 
     return (
         <section id='refrence' className='flex flex-col justify-center h-dvh overflow-hidden w-full md:max-w-[1140px] 2xl:max-w-[1440px] relative px-4 md:px-0'>
@@ -66,9 +67,9 @@ const LandingSection = () => {
             >
                 Making Possibilities into reality.
             </motion.p>
-            <div className='bg-[#454545] absolute -bottom-1 -translate-x-1/2 left-1/2 rounded-t-full'>
+            <div className={cn('bg-[#454545] absolute -bottom-1 -translate-x-1/2 left-1/2 rounded-t-full', theme === 'dark' ? 'bg-[#f2f2f2]' : 'bg-[#454545]')}>
                 <motion.div style={{ rotate }}>
-                    <ArrowUpFromDot className='text-white mx-4 my-2 md:mx-2 2xl:mx-4 md:my-2.5 2xl:my-5' />
+                    <ArrowUpFromDot className={cn('text-white mx-4 my-2 md:mx-2 2xl:mx-4 md:my-2.5 2xl:my-5', theme === 'dark' ? 'text-black' : 'text-white')} />
                 </motion.div>
             </div>
         </section>
