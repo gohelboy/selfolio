@@ -55,7 +55,7 @@ const LandingSection = ({ theme }) => {
                         width={600}
                         height={600}
                         alt="Me"
-                        className='rounded-full size-32 md:size-fit border md:rounded-3xl md:aspect-[10/9.5] 2xl:aspect-[10/11.5] object-cover'
+                        className='rounded-full size-32 md:size-fit md:rounded-3xl md:aspect-[10/9.5] 2xl:aspect-[10/11.5] object-cover'
                     />
                 </div>
             </div>
