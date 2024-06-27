@@ -1,43 +1,52 @@
+"use client";
 import { Button } from "@/components/ui/button";
-import { Globe, User } from "lucide-react";
-import React from "react";
+import { Globe, GraduationCap, User } from "lucide-react";
+import React, { useState } from "react";
+import Me from "./_forms/Me";
+import Education from "./_forms/Education";
+import { cn } from "@/lib/utils";
 
-const page = () => {
+const forms = [
+  { form: "Me", pos: 1, component: <Me />, icon: <User /> },
+  {
+    form: "Education",
+    pos: 2,
+    component: <Education />,
+    icon: <GraduationCap />,
+  },
+  { form: "Me", pos: 3, component: <Me />, icon: <User /> },
+  { form: "Me", pos: 4, component: <Me />, icon: <User /> },
+  { form: "Me", pos: 5, component: <Me />, icon: <User /> },
+  { form: "Me", pos: 6, component: <Me />, icon: <User /> },
+  { form: "Me", pos: 7, component: <Me />, icon: <User /> },
+  { form: "Me", pos: 8, component: <Me />, icon: <User /> },
+];
+
+const Page = () => {
+  const [currentOpenedForm, setCurrentOpenedForm] = useState(forms[0]);
+
   return (
     <div className="flex flex-col gap-4">
       <TitleMassage />
 
       <div className="flex gap-4 items-start mt-4">
         <div className="flex flex-col gap-2 cursor-pointer p-1 border border-gray-100 rounded-xl">
-          <Button size="icon" variant="ghost">
-            <User />
-          </Button>
-          <Button size="icon" variant="ghost">
-            <User />
-          </Button>
-          <Button size="icon" variant="ghost">
-            <User />
-          </Button>
-          <Button size="icon" variant="ghost">
-            <User />
-          </Button>
-          <Button size="icon" variant="ghost">
-            <User />
-          </Button>
-          <Button size="icon" variant="ghost">
-            <User />
-          </Button>
-          <Button size="icon" variant="ghost">
-            <User />
-          </Button>
-          <Button size="icon" variant="ghost">
-            <User />
-          </Button>
+          {forms.map((form) => (
+            <Button
+              key={form.pos}
+              size="icon"
+              variant="ghost"
+              className={cn(
+                "",
+                form.pos === currentOpenedForm.pos && "bg-gray-100"
+              )}
+              onClick={() => setCurrentOpenedForm(form)}
+            >
+              {form.icon}
+            </Button>
+          ))}
         </div>
-        <div>
-          <h1 className="text-xl font-bold text-gray-700">Me</h1>
-          <p className="text-gray-500 text-sm">Add details about yourself.</p>
-        </div>
+        <div className="w-full">{currentOpenedForm.component}</div>
       </div>
     </div>
   );
@@ -61,4 +70,4 @@ const TitleMassage = () => {
   );
 };
 
-export default page;
+export default Page;
