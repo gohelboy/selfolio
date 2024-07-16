@@ -1,15 +1,38 @@
 import GrayBlock from "@/app/_components/dashboard/GrayBlock";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Check } from "lucide-react";
 import React from "react";
+import { useToast } from "@/components/ui/use-toast";
 
 const Me = () => {
+  const { toast } = useToast();
+
+  const save = () => {
+    const time = new Date();
+    const currentTime =
+      time.getDate() + "/" + (time.getMonth() + 1) + "/" + time.getFullYear();
+
+    toast({
+      description: `Information Updated on ${currentTime}`,
+    });
+  };
+
   return (
     <div className="w-full">
-      <div className="mb-4">
-        <h1 className="text-xl font-bold text-gray-700">Me</h1>
-        <p className="text-gray-500 text-sm">Add details about yourself.</p>
+      <div className="mb-4 flex justify-between items-center">
+        <div>
+          <h1 className="text-xl font-bold text-gray-700">Me</h1>
+          <p className="text-gray-500 text-sm">Add details about yourself</p>
+        </div>
+        <div className="flex gap-2">
+          <Button variant="brown" size="icon" onClick={save}>
+            <Check size={14} />
+          </Button>
+        </div>
       </div>
+
       <GrayBlock>
         <div className="flex flex-col gap-4">
           <div>

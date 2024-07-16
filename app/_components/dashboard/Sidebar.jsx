@@ -12,7 +12,7 @@ const Sidebar = () => {
         <Link href={"/u/dashboard"}>
           <li
             className={cn(
-              "flex items-center gap-2 p-2 rounded-lg transition-all cursor-pointer hover:bg-gray-200",
+              "flex items-center gap-2 p-2 rounded-lg transition-all cursor-pointer active:scale-[0.97] hover:bg-gray-200",
               pathname === "/u/dashboard" && "bg-gray-200"
             )}
           >
@@ -23,7 +23,7 @@ const Sidebar = () => {
         <Link href={"/u/selfolio"}>
           <li
             className={cn(
-              "flex items-center gap-2 p-2 rounded-lg transition-all cursor-pointer hover:bg-gray-200",
+              "flex items-center gap-2 p-2 rounded-lg transition-all cursor-pointer active:scale-[0.97] hover:bg-gray-200",
               pathname === "/u/selfolio" && "bg-gray-200"
             )}
           >
@@ -34,7 +34,7 @@ const Sidebar = () => {
         <Link href={"/u/billing"}>
           <li
             className={cn(
-              "flex items-center gap-2 p-2 rounded-lg transition-all cursor-pointer hover:bg-gray-200",
+              "flex items-center gap-2 p-2 rounded-lg transition-all cursor-pointer active:scale-[0.97] hover:bg-gray-200",
               pathname === "/u/billing" && "bg-gray-200"
             )}
           >
@@ -45,7 +45,7 @@ const Sidebar = () => {
         <Link href={"/u/settings"}>
           <li
             className={cn(
-              "flex items-center gap-2 p-2 rounded-lg transition-all cursor-pointer hover:bg-gray-200",
+              "flex items-center gap-2 p-2 rounded-lg transition-all cursor-pointer active:scale-[0.97] hover:bg-gray-200",
               pathname === "/u/settings" && "bg-gray-200"
             )}
           >

@@ -37,7 +37,7 @@ const Page = () => {
               size="icon"
               variant="ghost"
               className={cn(
-                "",
+                "active:scale-95",
                 form.pos === currentOpenedForm.pos && "bg-gray-100"
               )}
               onClick={() => setCurrentOpenedForm(form)}
