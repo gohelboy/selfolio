@@ -1,8 +1,8 @@
 "use client";
-import { routes } from "@/utils/routes";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { useState } from "react";
+import { routes } from "@/utils/routes";
 import { useLogin } from "../authQueries";
 
 const Login = () => {
@@ -14,12 +14,20 @@ const Login = () => {
 
   const { mutate, isPending, data, isSuccess } = useLogin();
 
-  if (isSuccess) {
-    if (data.status) {
+  useEffect(() => {
+    if (isSuccess && data.status) {
       localStorage.setItem("user", JSON.stringify(data.data));
       router.push(routes.home);
     }
-  }
+  }, [isSuccess, data, router]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setDetails((prevDetails) => ({
+      ...prevDetails,
+      [name]: value,
+    }));
+  };
 
   const register = () => {
     mutate(details);
@@ -31,17 +39,19 @@ const Login = () => {
       <div className="flex flex-col gap-2 ">
         <input
           type="email"
+          name="email"
           placeholder="email"
           className="h-10 p-4 rounded-xl"
-          value={details?.email}
-          onChange={(e) => setDetails({ ...details, email: e.target.value })}
+          value={details.email}
+          onChange={handleChange}
         />
         <input
           type="password"
+          name="password"
           placeholder="password"
           className="h-10 p-4 rounded-xl"
-          value={details?.password}
-          onChange={(e) => setDetails({ ...details, password: e.target.value })}
+          value={details.password}
+          onChange={handleChange}
         />
         <button
           disabled={isPending}
@@ -54,9 +64,8 @@ const Login = () => {
       <span>
         Create a new account{" "}
         <Link href={routes.register} className="underline text-blue-700">
-          {" "}
           click here
-        </Link>{" "}
+        </Link>
       </span>
     </section>
   );
