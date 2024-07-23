@@ -1,40 +1,40 @@
+"use client";
 import GrayBlock from "@/app/_components/dashboard/GrayBlock";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import {
-  CalendarClock,
+  Building2,
+  CalendarFold,
   Check,
+  Milestone,
   Pencil,
   Plus,
-  School,
-  ScrollText,
 } from "lucide-react";
-import React, { useState } from "react";
-
 import {
   Dialog,
   DialogContent,
   DialogDescription,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  DialogFooter,
 } from "@/components/ui/dialog";
+import React from "react";
+import { Input } from "@/components/ui/input";
+import { useState } from "react";
 
-const initialValues = { degree: "", institution: "", graduationYear: "" };
+const initialValues = { company: "", position: "", year: "" };
 
-const Education = () => {
+const Experience = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const [formGroup, setFormGroup] = useState([initialValues]);
 
-  const addNewEducation = () => {
+  const addNewExperience = () => {
     setFormGroup([...formGroup, initialValues]);
   };
 
 
-
-  const AddNewEducationDialog = () => {
+  const AddNewExperienceDialog = () => {
     return (
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogTrigger>
@@ -46,7 +46,7 @@ const Education = () => {
           <DialogHeader>
             <DialogTitle>Add New Education</DialogTitle>
             <DialogDescription>
-              <AddNewEducationLayout />
+              <AddNewExperienceLayout />
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
@@ -66,11 +66,11 @@ const Education = () => {
     <div className="w-full">
       <div className="mb-4 flex justify-between items-center">
         <div>
-          <h1 className="text-xl font-bold text-gray-700">Education</h1>
-          <p className="text-gray-500 text-sm">Add details about education.</p>
+          <h1 className="text-xl font-bold text-gray-700">Experience</h1>
+          <p className="text-gray-500 text-sm">Add your working experience</p>
         </div>
         <div className="flex gap-2">
-          <AddNewEducationDialog />
+          <AddNewExperienceDialog />
           <Button variant="brown" size="icon">
             <Check size={14} />
           </Button>
@@ -90,24 +90,23 @@ const Education = () => {
             </Button>
             <div>
               <div className="flex items-center gap-1 font-semibold text-gray-600">
-                <School size={18} />
-                <span>Institution</span>
+                <Building2 size={18} />
+                <span>Company</span>
               </div>
               <h3 className="text-md w-[90%] ml-6">
-                N. J. Sonecha Institute of Technology N. J. Sonecha Institute of
-                Technology
+                Plutus Technologies PVT LTD.
               </h3>
             </div>
             <div>
               <div className="flex items-center gap-1 font-semibold text-gray-600">
-                <ScrollText size={18} />
-                <span>Degree</span>
+                <Milestone size={18} />
+                <span>Position</span>
               </div>
-              <h3 className="text-md ml-6">Masters of computer application</h3>
+              <h3 className="text-md ml-6">Mern Developer</h3>
             </div>
             <div>
               <div className="flex items-center gap-1 font-semibold text-gray-600">
-                <CalendarClock size={18} />
+                <CalendarFold size={18} />
                 <span>Year</span>
               </div>
               <h3 className="text-md ml-6">2019</h3>
@@ -117,42 +116,47 @@ const Education = () => {
       </GrayBlock>
     </div>
   );
+
+
+  
 };
 
-export default Education;
+export default Experience;
 
 
-const AddNewEducationLayout = () => {
-  return (
-    <div className="flex flex-col gap-4 mt-4">
-      <div className="flex flex-col gap-2">
-        <div className="flex flex-col gap-1">
-          <label htmlFor="name" className="text-sm text-gray-500">
-            Degree
-          </label>
-          <Input
-            id="degree"
-            placeholder="Bachelor of Science"
-            className="bg-white"
-          />
-        </div>
-        <div className="flex flex-col gap-1">
-          <label htmlFor="name" className="text-sm text-gray-500">
-            Institution
-          </label>
-          <Input
-            id="institution"
-            placeholder="University of California, Berkeley"
-            className="bg-white"
-          />
-        </div>
-        <div className="flex flex-col gap-1">
-          <label htmlFor="name" className="text-sm text-gray-500">
-            Year
-          </label>
-          <Input id="year" placeholder="2010-2014" className="bg-white" />
+const AddNewExperienceLayout = () => {
+    return (
+      <div className="flex flex-col gap-4 mt-4">
+        <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-1">
+            <label htmlFor="company" className="text-sm text-gray-500">
+              Company
+            </label>
+            <Input
+              id="company"
+              placeholder="Google"
+              className="bg-white"
+            />
+          </div>
+          <div className="flex flex-col gap-1">
+            <label htmlFor="position" className="text-sm text-gray-500">
+              Position
+            </label>
+            <Input
+              id="position"
+              placeholder="University of California, Berkeley"
+              className="bg-white"
+            />
+          </div>
+          <div className="flex flex-col gap-1">
+            <label htmlFor="name" className="text-sm text-gray-500">
+              Year
+            </label>
+            <Input id="year" placeholder="2010-2014" className="bg-white" />
+          </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  };
+
+

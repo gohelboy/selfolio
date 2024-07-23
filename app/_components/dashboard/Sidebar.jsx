@@ -31,10 +31,10 @@ const Sidebar = () => {
             <span>Selfolio</span>
           </li>
         </Link>
-        <Link href={"/u/billing"}>
+        <Link href={"#"}>
           <li
             className={cn(
-              "flex items-center gap-2 p-2 rounded-lg transition-all cursor-pointer active:scale-[0.97] hover:bg-gray-200",
+              "flex items-center gap-2 p-2 rounded-lg transition-all opacity-50",
               pathname === "/u/billing" && "bg-gray-200"
             )}
           >
