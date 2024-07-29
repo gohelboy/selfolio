@@ -87,8 +87,7 @@ const ProjectCard = ({ setIsDialogOpen }) => {
       <div className="h-36 bg-slate-50 rounded-sm"></div>
       <h1 className="text-lg mt-2 text-gray-700">Sample project</h1>
       <p className="text-xs text-gray-500">
-        Ensure that Input and Button are correctly imported from
-        "@/components/ui/button"...
+        Ensure that Input and Button are correctly imported from...
       </p>
     </div>
   );
