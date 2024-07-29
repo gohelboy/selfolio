@@ -117,7 +117,7 @@ export default Certificate;
 const AddNewCertificateLayout = () => {
   return (
     <div className="flex flex-col gap-4 mt-4">
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-3">
         <div className="flex flex-col gap-1">
           <label htmlFor="issuedBy" className="text-sm text-gray-500">
             Company
@@ -128,11 +128,7 @@ const AddNewCertificateLayout = () => {
           <label htmlFor="name" className="text-sm text-gray-500">
             Position
           </label>
-          <Input
-            id="name"
-            placeholder="SQL Server"
-            className="bg-white"
-          />
+          <Input id="name" placeholder="SQL Server" className="bg-white" />
         </div>
         <div className="flex flex-col gap-1">
           <label htmlFor="year" className="text-sm text-gray-500">

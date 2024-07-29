@@ -33,7 +33,6 @@ const Experience = () => {
     setFormGroup([...formGroup, initialValues]);
   };
 
-
   const AddNewExperienceDialog = () => {
     return (
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
@@ -116,47 +115,37 @@ const Experience = () => {
       </GrayBlock>
     </div>
   );
-
-
-  
 };
 
 export default Experience;
 
-
 const AddNewExperienceLayout = () => {
-    return (
-      <div className="flex flex-col gap-4 mt-4">
-        <div className="flex flex-col gap-2">
-          <div className="flex flex-col gap-1">
-            <label htmlFor="company" className="text-sm text-gray-500">
-              Company
-            </label>
-            <Input
-              id="company"
-              placeholder="Google"
-              className="bg-white"
-            />
-          </div>
-          <div className="flex flex-col gap-1">
-            <label htmlFor="position" className="text-sm text-gray-500">
-              Position
-            </label>
-            <Input
-              id="position"
-              placeholder="University of California, Berkeley"
-              className="bg-white"
-            />
-          </div>
-          <div className="flex flex-col gap-1">
-            <label htmlFor="name" className="text-sm text-gray-500">
-              Year
-            </label>
-            <Input id="year" placeholder="2010-2014" className="bg-white" />
-          </div>
+  return (
+    <div className="flex flex-col gap-4 mt-4">
+      <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-1">
+          <label htmlFor="company" className="text-sm text-gray-500">
+            Company
+          </label>
+          <Input id="company" placeholder="Google" className="bg-white" />
+        </div>
+        <div className="flex flex-col gap-1">
+          <label htmlFor="position" className="text-sm text-gray-500">
+            Position
+          </label>
+          <Input
+            id="position"
+            placeholder="University of California, Berkeley"
+            className="bg-white"
+          />
+        </div>
+        <div className="flex flex-col gap-1">
+          <label htmlFor="name" className="text-sm text-gray-500">
+            Year
+          </label>
+          <Input id="year" placeholder="2010-2014" className="bg-white" />
         </div>
       </div>
-    );
-  };
-
-
+    </div>
+  );
+};

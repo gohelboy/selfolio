@@ -95,6 +95,7 @@ const Me = () => {
               id="aboutMe"
               placeholder="Ex: I am a passionate, creative, and multitasker."
               className="bg-white"
+              rows={5}
             />
           </div>
         </div>

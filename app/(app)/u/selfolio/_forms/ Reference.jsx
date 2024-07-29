@@ -1,33 +1,33 @@
 import GrayBlock from "@/app/_components/dashboard/GrayBlock";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import {
-  CalendarClock,
-  Check,
-  Pencil,
-  Plus,
-  School,
-  ScrollText,
-} from "lucide-react";
-import React, { useState } from "react";
-
 import {
   Dialog,
   DialogContent,
   DialogDescription,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  DialogFooter,
 } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import {
+  Check,
+  Mail,
+  Milestone,
+  Pencil,
+  Phone,
+  Plus,
+  User,
+} from "lucide-react";
+import { useState } from "react";
 
-const initialValues = { degree: "", institution: "", graduationYear: "" };
+const initialValues = { name: "", role: "", email: "", phone: "" };
 
-const Education = () => {
+const Reference = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [formGroup, setFormGroup] = useState([initialValues]);
 
-  const AddNewEducationDialog = () => {
+  const AddNewReferenceDialog = () => {
     return (
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogTrigger>
@@ -37,9 +37,9 @@ const Education = () => {
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Add New Education</DialogTitle>
+            <DialogTitle>Add New Refrence</DialogTitle>
             <DialogDescription>
-              <AddNewEducationLayout />
+              <AddNewReferenceLayout />
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
@@ -59,17 +59,16 @@ const Education = () => {
     <div className="w-full">
       <div className="mb-4 flex justify-between items-center">
         <div>
-          <h1 className="text-xl font-bold text-gray-700">Education</h1>
-          <p className="text-gray-500 text-sm">Add details about education.</p>
+          <h1 className="text-xl font-bold text-gray-700">Reference</h1>
+          <p className="text-gray-500 text-sm">Add reference details</p>
         </div>
         <div className="flex gap-2">
-          <AddNewEducationDialog />
+          <AddNewReferenceDialog />
           <Button variant="brown" size="icon">
             <Check size={14} />
           </Button>
         </div>
       </div>
-
       <GrayBlock>
         <div className="grid grid-cols-2 gap-4">
           <div className="realtvie flex flex-col gap-4 border border-gray-200 p-3 rounded-lg bg-white">
@@ -83,27 +82,31 @@ const Education = () => {
             </Button>
             <div>
               <div className="flex items-center gap-1 font-semibold text-gray-600">
-                <School size={18} />
-                <span>Institution</span>
+                <User size={18} />
+                <span>Name</span>
               </div>
-              <h3 className="text-md w-[90%] ml-6">
-                N. J. Sonecha Institute of Technology N. J. Sonecha Institute of
-                Technology
-              </h3>
+              <h3 className="text-md w-[90%] ml-6">Clay Jensen</h3>
             </div>
             <div>
               <div className="flex items-center gap-1 font-semibold text-gray-600">
-                <ScrollText size={18} />
-                <span>Degree</span>
+                <Milestone size={18} />
+                <span>Role</span>
               </div>
-              <h3 className="text-md ml-6">Masters of computer application</h3>
+              <h3 className="text-md ml-6">Product Manager</h3>
             </div>
             <div>
               <div className="flex items-center gap-1 font-semibold text-gray-600">
-                <CalendarClock size={18} />
-                <span>Year</span>
+                <Mail size={18} />
+                <span>Email</span>
               </div>
-              <h3 className="text-md ml-6">2019</h3>
+              <h3 className="text-md ml-6">clay.jensen@outlook.com</h3>
+            </div>
+            <div>
+              <div className="flex items-center gap-1 font-semibold text-gray-600">
+                <Phone size={18} />
+                <span>Email</span>
+              </div>
+              <h3 className="text-md ml-6">+91 87354 36483</h3>
             </div>
           </div>
         </div>
@@ -112,37 +115,40 @@ const Education = () => {
   );
 };
 
-export default Education;
+export default Reference;
 
-const AddNewEducationLayout = () => {
+const AddNewReferenceLayout = () => {
   return (
     <div className="flex flex-col gap-4 mt-4">
       <div className="flex flex-col gap-3">
         <div className="flex flex-col gap-1">
           <label htmlFor="name" className="text-sm text-gray-500">
-            Degree
+            Name
+          </label>
+          <Input id="name" placeholder="Name" className="bg-white" />
+        </div>
+        <div className="flex flex-col gap-1">
+          <label htmlFor="role" className="text-sm text-gray-500">
+            Role
+          </label>
+          <Input id="role" placeholder="Role" className="bg-white" />
+        </div>
+        <div className="flex flex-col gap-1">
+          <label htmlFor="email" className="text-sm text-gray-500">
+            Email
           </label>
           <Input
-            id="degree"
-            placeholder="Bachelor of Science"
+            id="email"
+            type="email"
+            placeholder="Email"
             className="bg-white"
           />
         </div>
         <div className="flex flex-col gap-1">
-          <label htmlFor="name" className="text-sm text-gray-500">
-            Institution
+          <label htmlFor="phone" className="text-sm text-gray-500">
+            Phone
           </label>
-          <Input
-            id="institution"
-            placeholder="University of California, Berkeley"
-            className="bg-white"
-          />
-        </div>
-        <div className="flex flex-col gap-1">
-          <label htmlFor="name" className="text-sm text-gray-500">
-            Year
-          </label>
-          <Input id="year" placeholder="2010-2014" className="bg-white" />
+          <Input id="phone" placeholder="Phone" className="bg-white" />
         </div>
       </div>
     </div>
